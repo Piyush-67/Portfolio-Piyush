@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush Pratap Verma | Front-End Developer</title>
+    <!-- Website Icon-->
+    <link rel="icon" href="moon-knight-avatar.png" type="image/png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #4299e1;
+            --accent-light: #90cdf4;
+            --dark: #1e293b;
+            --light: #f7fafc;
+            --text: #2d3748;
+            --text-light: #718096;
+        }
+        /* Dark theme overrides */
+        .dark-theme {
+            --primary: #0d223d;
+            --secondary: #181f2a;
+            --accent: #63b3ed;
+            --accent-light: #bee3f8;
+            --dark: #0f172a;
+            --light: #111827;
+            --text: #f7fafc;
+            --text-light: #cbd5e1;
+        }
+        .dark-theme body,
+        .dark-theme {
+            background-color: var(--light) !important;
+            color: var(--text) !important;
+        }
+        .dark-theme .navbar,
+        .dark-theme .navbar.scrolled {
+            background-color: rgba(15, 23, 42, 0.95) !important;
+        }
+        .dark-theme .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        .dark-theme .skill-card,
+        .dark-theme .project-card,
+        .dark-theme .testimonial-card,
+        .dark-theme .team-card,
+        .dark-theme .contact-form,
+        .dark-theme .bg-white,
+        .dark-theme .bg-gray-50 {
+            background: #1e293b !important;
+            color: var(--text) !important;
+        }
+        .dark-theme .text-gray-600,
+        .dark-theme .text-gray-700 {
+            color: var(--text-light) !important;
+        }
+        .dark-theme .bg-gray-100 {
+            background: #334155 !important;
+        }
+        .dark-theme .bg-dark {
+            background-color: #0f172a !important;
+        }
+        .dark-theme .form-control {
+            background: #1e293b !important;
+            color: var(--text) !important;
+            border-color: #334155 !important;
+        }
+        .dark-theme .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.2);
+            border-color: var(--accent);
+        }
+        .dark-theme .whatsapp-btn {
+            background: #128C7E;
+            color: white;
+        }
+        .dark-theme .whatsapp-btn:hover {
+            background: #25D366;
+        }
+        .dark-theme .project-overlay {
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .dark-theme .bg-primary {
+            background-color: var(--primary) !important;
+        }
+        .dark-theme .text-primary {
+            color: var(--accent) !important;
+        }
+        .dark-theme .text-accent {
+            color: var(--accent) !important;
+        }
+        .dark-theme .bg-accent {
+            background-color: var(--accent) !important;
+        }
+        .dark-theme .border-primary {
+            border-color: var(--accent) !important;
+        }
+        .dark-theme .bg-opacity-10 {
+            background-color: rgba(99, 179, 237, 0.1) !important;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+            padding-bottom: 5%;
+        }
+
+        /* Header Styles */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 0 1rem;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(26, 53, 93, 0.95);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-light);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            top: 60%;
+            left: 80%;
+            animation-delay: 3s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            top: 30%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        .shape:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-light);
+            top: 70%;
+            left: 10%;
+            animation-delay: 9s;
+        }
+
+        .shape:nth-child(5) {
+            width: 180px;
+            height: 180px;
+            background: var(--accent);
+            top: 20%;
+            left: 20%;
+            animation-delay: 12s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-20px) rotate(120deg);
+            }
+            66% {
+                transform: translateY(10px) rotate(240deg);
+            }
+        }
+
+        /* Skill Cards */
+        .skill-card {
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .skill-card:hover::before {
+            opacity: 0.1;
+        }
+
+        /* Project Cards */
+        .project-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 53, 93, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--accent-light);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        /* Testimonial Card Hover & Animation */
+        .testimonial-animated {
+            transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1);
+            will-change: transform, box-shadow;
+        }
+        .testimonial-animated:hover {
+            transform: translateY(-12px) scale(1.03) rotate(-1deg);
+            box-shadow: 0 12px 32px 0 rgba(66,153,225,0.15), 0 2px 8px 0 rgba(0,0,0,0.08);
+            z-index: 2;
+        }
+        .testimonial-animated .stars {
+            animation: stars-pop 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes stars-pop {
+            0% { transform: scale(0.7) rotate(-10deg); opacity: 0.5; }
+            60% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        /* Contact Form */
+        .contact-form .form-control {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            width: 100%;
+        }
+
+        .contact-form .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* Navbar underline animation */
+        .navbar a {
+            position: relative;
+            overflow: hidden;
+        }
+        .navbar a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s cubic-bezier(.4,0,.2,1), left 0.3s cubic-bezier(.4,0,.2,1);
+        }
+        .navbar a:hover::after,
+        .navbar a.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Hamburger/mobile menu underline */
+        #mobile-menu a {
+            position: relative;
+            overflow: hidden;
+        }
+        #mobile-menu a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s cubic-bezier(.4,0,.2,1), left 0.3s cubic-bezier(.4,0,.2,1);
+        }
+        #mobile-menu a:hover::after,
+        #mobile-menu a.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            #hamburger-btn {
+                margin-left: auto;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Utility Classes */
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .bg-dark {
+            background-color: var(--dark);
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .bg-accent {
+            background-color: var(--accent);
+        }
+
+        h1, h2, h3, h4, h5, h6, .cursor-pointer, .team-card, .skill-card, .project-card, .testimonial-card, .testimonial-animated {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar bg-transparent py-4">
+        <div class="container mx-auto px-6 flex items-center">
+            <!-- Hamburger Button -->
+            <button id="hamburger-btn"
+                class="md:hidden text-white focus:outline-none flex items-center justify-center mr-4">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            <a href="#" class="text-2xl font-bold text-white">Piyush<span class="text-accent">.</span></a>
+            <div class="flex-1 flex justify-end items-center">
+                <!-- Desktop Menu -->
+                <div id="nav-links" class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-accent transition">Home</a>
+                    <a href="#skills" class="text-white hover:text-accent transition">Skills</a>
+                    <a href="#portfolio" class="text-white hover:text-accent transition">Portfolio</a>
+                    <a href="#testimonials" class="text-white hover:text-accent transition">Testimonials</a>
+                    <a href="#team" class="text-white hover:text-accent transition">Team</a>
+                    <a href="#about" class="text-white hover:text-accent transition">About</a>
+                    <a href="#contact" class="text-white hover:text-accent transition">Contact</a>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden flex-col bg-dark w-full px-6 py-4 space-y-4">
+            <a href="#home" class="text-white hover:text-accent transition block">Home</a>
+            <a href="#skills" class="text-white hover:text-accent transition block">Skills</a>
+            <a href="#portfolio" class="text-white hover:text-accent transition block">Portfolio</a>
+            <a href="#testimonials" class="text-white hover:text-accent transition block">Testimonials</a>
+            <a href="#team" class="text-white hover:text-accent transition block">Team</a>
+            <a href="#about" class="text-white hover:text-accent transition block">About</a>
+            <a href="#contact" class="text-white hover:text-accent transition block">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero flex items-center justify-center relative">
+        <div class="animated-bg">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container mx-auto px-6 hero-content text-center">
+            <div data-aos="fade-up" data-aos-duration="800">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 cursor-pointer">Piyush Pratap Verma</h1>
+                <h2 class="text-xl md:text-2xl font-medium text-white opacity-90 mb-8">Front-End Developer</h2>
+                <div class="flex justify-center space-x-4 mb-12">
+                    <a href="#contact"
+                        class="px-8 py-3 bg-accent text-white rounded-full font-medium hover:bg-opacity-90 transition">Hire
+                        Me</a>
+                    <a href="#portfolio"
+                        class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-black transition">My
+                        Work</a>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <a href="#about" class="text-white flex flex-col items-center animate-bounce">
+                    <span>Scroll Down</span>
+                    <i class="fas fa-chevron-down mt-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-primary">Skills</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">I specialize in front-end development with expertise in these technologies</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+                <!-- Skill 1 -->
+                <div class="skill-card p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl text-primary mb-4">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">HTML5</h3>
+                    <p class="text-gray-600">Semantic markup, accessibility, and modern HTML features.</p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-card p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl text-primary mb-4">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">CSS3</h3>
+                    <p class="text-gray-600">Responsive design, animations, Flexbox, Grid, and CSS architecture.</p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl text-primary mb-4">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">JavaScript</h3>
+                    <p class="text-gray-600">Modern ES6+, DOM manipulation, async programming.</p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card p-8 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-5xl text-primary mb-4">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Python</h3>
+                    <p class="text-gray-600">Scripting, web development with Django/Flask, automation.</p>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card p-8 text-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-5xl text-primary mb-4">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">PHP</h3>
+                    <p class="text-gray-600">Backend development with Laravel, WordPress customization.</p>
+                </div>
+
+                <!-- Skill 6 - MySQL -->
+                <div class="skill-card p-8 text-center" data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-5xl text-primary mb-4">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">MySQL</h3>
+                    <p class="text-gray-600">Database design, optimization, and complex queries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-primary">Projects</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">A selection of my recent projects showcasing my skills</p>
+            </div>
+            <div class="project-grid grid gap-8">
+                <!-- Project 1 - Aquadosti -->
+                <div class="project-card" data-aos="zoom-in">
+                    <div class="project-image">
+                        <img src="aqua-dosti.jpg" alt="Aquadosti Website">
+                        <div class="project-overlay">
+                            <a href="https://aquadosti.in/" target="_blank" class="px-6 py-3 bg-accent text-white rounded-full font-semibold shadow-lg mr-2">View Live</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Aquadosti</h3>
+                        <p class="text-gray-600 mb-4">A modern website for water purification services with booking system and information portal.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">HTML5</span>
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">CSS3</span>
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">PHP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 - Sushant IT College -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="sushant-it-college.png" alt="Sushant IT College Website">
+                        <div class="project-overlay">
+                            <a href="https://sushantitcollege.com/" target="_blank" class="px-6 py-3 bg-accent text-white rounded-full font-semibold shadow-lg mr-2">View Live</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sushant IT College</h3>
+                        <p class="text-gray-600 mb-4">Educational institution website with course information, faculty details, and admission system.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">WordPress</span>
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">PHP</span>
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">MySQL</span>
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Volcanic Computer Academy -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Volcanic Computer Academy Website">
+                        <div class="project-overlay">
+                            <a href="https://volcaniccomputeracademy.com/" target="_blank" class="px-6 py-3 bg-accent text-white rounded-full font-semibold shadow-lg mr-2">View Live</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Volcanic Computer Academy</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive educational platform with course management, student portal, and payment integration.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">Vue.js</span>
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">Laravel</span>
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">MySQL</span>
+                            <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <!-- Testimonial Section with Customer Photos -->
+<section id="testimonials" class="py-20 testimonial-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="royal-font text-4xl font-bold text-[var(--royal-blue)] mb-4">What Our Clients Say</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Genuine feedback from our valued clients
+            </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Testimonial 1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden testimonial-animated" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative">
+                    <div class="h-32 bg-gradient-to-r from-blue-500 to-blue-700"></div>
+                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+                        <div class="w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-lg">
+                            <img src="Vikash Kumar(Director).jpeg" alt="Vikash Kumar" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-16 pb-6 px-6 text-center">
+                    <h4 class="font-bold text-lg text-[var(--royal-blue)]">Vikash Kumar</h4>
+                    <p class="text-[var(--gold)] text-sm mb-3">Aquadosti Director</p>
+                    <div class="flex justify-center mb-3 stars">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic text-sm leading-relaxed">
+                        "Piyush delivered an outstanding website for our water purification business. His attention to detail and technical expertise resulted in a site that perfectly represents our brand and functions flawlessly."
+                    </p>
+                </div>
+                <div class="bg-gray-50 px-6 py-3 border-t border-gray-100">
+                    <div class="flex justify-between items-center text-xs text-gray-500">
+                        <span><i class="fas fa-map-marker-alt mr-1"></i> Giridih</span>
+                        <span><i class="fas fa-calendar-alt mr-1"></i> Since 2020</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden testimonial-animated" data-aos="fade-up" data-aos-delay="200">
+                <div class="relative">
+                    <div class="h-32 bg-gradient-to-r from-green-500 to-green-700"></div>
+                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+                        <div class="w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-lg">
+                            <img src="" alt="-----" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-16 pb-6 px-6 text-center">
+                    <h4 class="font-bold text-lg text-[var(--royal-blue)]">-----</h4>
+                    <p class="text-[var(--gold)] text-sm mb-3">Sushant IT College Director</p>
+                    <div class="flex justify-center mb-3 stars">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic text-sm leading-relaxed">
+                        "Working with Piyush was a pleasure. He understood our requirements perfectly and created a website that has significantly improved our online presence and student engagement."
+                    </p>
+                </div>
+                <div class="bg-gray-50 px-6 py-3 border-t border-gray-100">
+                    <div class="flex justify-between items-center text-xs text-gray-500">
+                        <span><i class="fas fa-map-marker-alt mr-1"></i> UP</span>
+                        <span><i class="fas fa-building mr-1"></i> Sushant IT College</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden testimonial-animated" data-aos="fade-up" data-aos-delay="300">
+                <div class="relative">
+                    <div class="h-32 bg-gradient-to-r from-purple-500 to-purple-700"></div>
+                    <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+                        <div class="w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-lg">
+                            <img src="Vikash Kumar(Director).jpeg" alt="Vishal Kumar" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-16 pb-6 px-6 text-center">
+                    <h4 class="font-bold text-lg text-[var(--royal-blue)]">Vishal Kumar(Mentor)</h4>
+                    <p class="text-[var(--gold)] text-sm mb-3">VCA Director</p>
+                    <div class="flex justify-center mb-3 stars">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic text-sm leading-relaxed">
+                        "Piyush's technical skills and creative approach helped us build a comprehensive platform for our academy. The website has been instrumental in streamlining our operations and improving student experience."
+                    </p>
+                </div>
+                <div class="bg-gray-50 px-6 py-3 border-t border-gray-100">
+                    <div class="flex justify-between items-center text-xs text-gray-500">
+                        <span><i class="fas fa-map-marker-alt mr-1"></i> Giridih</span>
+                        <span><i class="fas fa-user-graduate mr-1"></i> VCA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-primary">Team</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">My talented student collaborators</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-card bg-white rounded-lg overflow-hidden shadow-lg text-center p-6">
+                        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary mb-4">
+                            <img src="Harshit.jpeg"
+                                alt="Harshit - A creative professional working on laptop in a cozy workspace with plants"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Harshit</h3>
+                        <p class="text-accent font-medium mb-4">Content Creator & Database Expert</p>
+                        <p class="text-gray-600 mb-4">Creates engaging content that resonates with our audience and
+                            manages databases efficiently.</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-card bg-white rounded-lg overflow-hidden shadow-lg text-center p-6">
+                        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary mb-4">
+                            <img src="Roshan.jpeg"
+                                alt="Roshan Kumar Rana - UI designer sketching wireframes with digital tablet in a modern office"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Roshan Kumar Rana</h3>
+                        <p class="text-accent font-medium mb-4">UI Designer</p>
+                        <p class="text-gray-600 mb-4">Crafts beautiful and intuitive user interfaces.</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-member" data-aos="fade-up" data-aos-delay="500">
+                    <div class="team-card bg-white rounded-lg overflow-hidden shadow-lg text-center p-6">
+                        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary mb-4">
+                            <img src="Rishav.jpeg"
+                                alt="Rishav - Young innovator brainstorming ideas in a collaborative workspace with whiteboards"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Rishav</h3>
+                        <p class="text-accent font-medium mb-4">Ideas</p>
+                        <p class="text-gray-600 mb-4">Brings fresh perspectives and innovative solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12" data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About <span class="text-accent">Me</span></h2>
+                    <p class="mb-6 text-white opacity-90">
+                        I'm Piyush Pratap Verma, a student and passionate Front-End Developer. I enjoy building
+                        beautiful and functional websites and web apps, and I have a solid understanding of basic
+                        backend operations.
+                    </p>
+                    <p class="mb-6 text-white opacity-90">
+                        As a member of VCA (Volcanic Computer Academy), I work with other students to learn, experiment,
+                        and create digital projects together. We focus on improving our skills and supporting each other
+                        as we grow.
+                    </p>
+                    <p class="mb-8 text-white opacity-90">
+                        I pay close attention to detail and always aim for a great user experience. My goal is to write
+                        clean code and design interfaces that are easy to use and meet real needs, while continuing to
+                        learn and develop as a student developer.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-white bg-opacity-10 rounded-lg p-4 text-center" data-aos="zoom-in"
+                            data-aos-delay="100">
+                            <div class="text-2xl font-bold">20+</div>
+                            <div class="text-sm">Projects Completed</div>
+                        </div>
+                        <div class="bg-white bg-opacity-10 rounded-lg p-4 text-center" data-aos="zoom-in"
+                            data-aos-delay="300">
+                            <div class="text-2xl font-bold">3</div>
+                            <div class="text-sm">Team Members</div>
+                        </div>
+                        <div class="bg-white bg-opacity-10 rounded-lg p-4 text-center" data-aos="zoom-in"
+                            data-aos-delay="500">
+                            <div class="text-2xl font-bold">100%</div>
+                            <div class="text-sm">Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="relative flex justify-center items-center"></div>
+                    <div
+                        class="w-40 h-40 md:w-80 md:h-80 bg-gray-200 rounded-full overflow-hidden flex justify-center items-center mx-auto">
+                        <img src="Piyush.jpeg"
+                            alt="Piyush Pratap Verma working in a modern office space with dual monitors, writing code on a sleek laptop"
+                            class="w-full h-full object-cover object-center" />
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-center mt-4">Piyush Pratap Verma</h3>
+                    <p class="text-white text-center">Volcanic Computer Academy</p>
+                    <p class="text-white text-sm mt-2 text-center">Team of aspiring developers & designers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="text-primary">Touch</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Have a project in mind or want to discuss potential
+                    opportunities?</p>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-8">
+                    <div class="bg-white rounded-lg shadow-lg p-8 h-full" data-aos="fade-right">
+                        <h3 class="text-xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Location</h4>
+                                    <p class="text-gray-600">Giridih, Jharkhand, India</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Email</h4>
+                                    <p class="text-gray-600">elixircoder@outlook.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/Piyush-67"
+                                    class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://wa.me/916200056102"
+                                    class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white hover:bg-green-600 transition"
+                                    target="_blank" rel="noopener" title="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="https://www.instagram.com/piyussh._.9/"
+                                    class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-8">
+                    <div class="bg-white rounded-lg shadow-lg p-8" data-aos="fade-left">
+                        <h3 class="text-xl font-bold mb-6">Send Me a Message</h3>
+                        <form id="contact-form" class="contact-form">
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 mb-2">Your Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject" class="form-control" required>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 mb-2">Your Message</label>
+                                <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="whatsapp-btn w-full">
+                                <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8" style="margin-bottom:0;padding-bottom:0;">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 flex items-center space-x-2">
+                    <a href="piyush.html"><img src="moon-knight-avatar.png" alt="Logo" class="w-8 h-8 rounded-full shadow-md" /></a>
+                    <span class="font-bold text-lg"><a href="piyush.html">Piyush Pratap Verma</a></span>
+                </div>
+                <div class="flex space-x-6 mb-4 md:mb-0">
+                    <a href="#home" class="hover:text-accent transition">Home</a>
+                    <a href="#portfolio" class="hover:text-accent transition">Portfolio</a>
+                    <a href="#contact" class="hover:text-accent transition">Contact</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/Piyush-67" class="text-gray-400 hover:text-accent transition" title="GitHub">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/916200056102" class="text-green-400 hover:text-accent transition" title="WhatsApp" target="_blank">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/piyussh._.9/" class="text-pink-400 hover:text-accent transition" title="Instagram">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-gray-400 text-sm">
+                <span>&copy; <span id="year"></span> Piyush Pratap Verma || Giridih, Jharkhand.</span>
+            </div>
+        </div>
+        <script>
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: false, // Animate on every scroll
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('hamburger-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // WhatsApp integration
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Format the message for WhatsApp
+            const whatsappMessage = `Hey Piyush,%0A%0A I'm ${name}%0A And this is my E-mail Address: ${email}%0A *subject:* ${subject}%0A%0A*Message:*%0A${message}%0A%0AI've some work with you.`;
+            
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/916200056102?text=${whatsappMessage}`;
+            
+            // Open WhatsApp in a new tab
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            document.getElementById('contact-form').reset();
+            
+            // Show success message (optional)
+            alert('Opening WhatsApp to send your message...');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
