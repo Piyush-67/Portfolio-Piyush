@@ -22,7 +22,7 @@ The website is built using plain **HTML** and static assets. :contentReference[o
 
 | File / Asset | Purpose |
 |--------------|---------|
-| `piyush.html` | Main portfolio page |
+| `index.html` | Main portfolio page |
 | `Piyush.jpeg` | Personal image |
 | `Rishav.jpeg` | Team member photo |
 | `Roshan.jpeg` | Team member photo |
