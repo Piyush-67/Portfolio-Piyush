@@ -203,21 +203,6 @@
       padding: 8px 18px;
       font-size: 0.85rem;
     }
-    .resume-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      font-weight: 500;
-      padding: 8px 12px;
-      border-radius: 8px;
-      transition: color 0.2s, background 0.2s;
-    }
-    .resume-btn:hover {
-      color: var(--accent);
-      background: var(--accent-soft);
-    }
     .mobile-toggle {
       display: none;
       font-size: 1.5rem;
@@ -541,6 +526,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
     .project-thumb {
       aspect-ratio: 16 / 10;
@@ -611,6 +597,7 @@
       display: flex;
       gap: 12px;
       align-items: center;
+      margin-top: auto;
     }
     .project-actions a {
       font-size: 0.82rem;
@@ -985,9 +972,6 @@
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-cta">
-        <a href="/assets/documents/piyush-verma-resume.pdf" download class="resume-btn">
-          <i data-lucide="download" style="width:15px;height:15px;"></i> Resume
-        </a>
         <a href="#contact" class="btn btn-primary">Hire Me</a>
       </div>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -1004,9 +988,6 @@
     <a href="#projects">Projects</a>
     <a href="#blog">Blog</a>
     <a href="#contact">Contact</a>
-    <a href="/assets/documents/piyush-verma-resume.pdf" download class="btn btn-outline">
-      <i data-lucide="download" style="width:16px;height:16px;"></i> Download Resume
-    </a>
     <a href="#contact" class="btn btn-primary">Hire Me</a>
   </nav>
 
@@ -1029,13 +1010,16 @@
               <a href="#projects" class="btn btn-primary">
                 <i data-lucide="layout-grid" style="width:16px;height:16px;"></i> Explore Projects
               </a>
-              <a href="/assets/documents/piyush-verma-resume.pdf" download class="btn btn-outline">
-                <i data-lucide="download" style="width:16px;height:16px;"></i> Download Resume
-              </a>
             </div>
             <div class="hero-socials">
               <a href="https://github.com/Piyush-67" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="github" style="width:16px;height:16px;"></i> GitHub
+              </a>
+              <a href="https://www.instagram.com/piyush._.verma36/" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="instagram" style="width:16px;height:16px;"></i> Instagram
+              </a>
+              <a href="https://wa.me/916200056102" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="message-circle" style="width:16px;height:16px;"></i> WhatsApp
               </a>
             </div>
           </div>
@@ -1043,14 +1027,7 @@
             <div class="hero-deco hero-deco-1"></div>
             <div class="hero-deco hero-deco-2"></div>
             <div class="hero-image-wrap">
-              <!-- Placeholder for profile photo. Replace src with actual photo path. -->
-                          <div class="hero-image-wrap">
-                                  <img src="Piyush.jpeg"
-
-              <div class="hero-placeholder">
-                <i data-lucide="user-round" class="icon-large" style="width:64px;height:64px;"></i>
-                <p>Your photo here</p>
-              </div>
+              <img src="Piyush.jpeg" alt="Piyush Kumar Verma" loading="eager" />
             </div>
           </div>
         </div>
@@ -1235,9 +1212,9 @@
             <p>Have a project in mind, a website to redesign, or just want to say hello? Send a message and I'll get back to you.</p>
             <div class="contact-links">
               <a href="mailto:hello@elixirp.dev" id="emailLink"><i data-lucide="mail" style="width:16px;height:16px;"></i> hello@elixirp.dev</a>
-              <a href="https://wa.me/" id="whatsappLink" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle" style="width:16px;height:16px;"></i> WhatsApp</a>
-              <a href="https://github.com/elixirp" target="_blank" rel="noopener noreferrer"><i data-lucide="github" style="width:16px;height:16px;"></i> GitHub</a>
-              <a href="https://linkedin.com/in/piyushkumarverma" target="_blank" rel="noopener noreferrer"><i data-lucide="linkedin" style="width:16px;height:16px;"></i> LinkedIn</a>
+              <a href="https://wa.me/916200056102" id="whatsappLink" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle" style="width:16px;height:16px;"></i> WhatsApp (+91 62000 56102)</a>
+              <a href="https://github.com/Piyush-67" target="_blank" rel="noopener noreferrer"><i data-lucide="github" style="width:16px;height:16px;"></i> GitHub</a>
+              <a href="https://www.instagram.com/piyush._.verma36/" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram" style="width:16px;height:16px;"></i> Instagram</a>
             </div>
           </div>
           <div class="reveal">
@@ -1315,15 +1292,14 @@
             <li><a href="#blog">Blog</a></li>
             <li><a href="#github">GitHub</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="/assets/documents/piyush-verma-resume.pdf" download>Resume</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h5>Connect</h5>
           <ul>
-            <li><a href="https://github.com/elixirp" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            <li><a href="https://linkedin.com/in/piyushkumarverma" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="mailto:hello@elixirp.dev">Email</a></li>
+            <li><a href="https://github.com/Piyush-67" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.instagram.com/piyush._.verma36/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://wa.me/916200056102" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
             <li><a href="#contact">Send a message</a></li>
           </ul>
         </div>
@@ -1340,11 +1316,11 @@
        CONFIG — REPLACE THESE PLACEHOLDERS WITH YOUR REAL DETAILS
        ============================================================ */
     const CONFIG = {
-      githubUsername: 'elixirp',                 // <-- REPLACE with your real GitHub username
-      email: 'hello@elixirp.dev',                // <-- REPLACE with your real email
-      whatsapp: '',                              // <-- REPLACE, digits only e.g. '919876543210'
+      githubUsername: 'Piyush-67',
+      email: 'hello@elixirp.dev',
+      whatsapp: '916200056102',
       cacheKey: 'elixirp_gh_cache_v1',
-      cacheTTL: 1000 * 60 * 30                   // 30 minutes
+      cacheTTL: 1000 * 60 * 30
     };
 
     /* ============================================================
@@ -1392,7 +1368,7 @@
         tech: ["HTML", "CSS", "JavaScript"],
         live: "https://aquadosti.in/",
         caseStudy: "#projects",
-        image: ""
+        image: "aqua-dosti.jpg"
       },
       {
         title: "Yogneer",
